@@ -1,11 +1,8 @@
 /* eslint-disable react/prop-types */
-"use cliente";
 // eslint-disable-next-line no-unused-vars
-export default function Guitar({ guitar,addToCart }) {
+export default function Guitar({ guitar, addToCart }) {
   // eslint-disable-next-line no-unused-vars
   const { id, image, name, description, price } = guitar;
-
-  
 
   return (
     <div className="col-md-6 col-lg-4 my-4 row align-items-center">

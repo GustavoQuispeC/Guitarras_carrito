@@ -1,11 +1,22 @@
 import Guitar from "./components/Guitar";
 import Header from "./components/Header";
 import { db } from "./data/db";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
+
+  //!funcion para obtener el carrito del localStorage
+  const initialCart = ()=>{
+    const localStorageCart = localStorage.getItem("cart");
+    return localStorageCart ? JSON.parse(localStorageCart) : [];
+  }
+
   const [data] = useState(db);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(initialCart); //estado del carrito
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   //!funcion para agregar un item al carrito
   function addToCart(item) {
