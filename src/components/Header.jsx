@@ -1,4 +1,19 @@
-export default function Header( ) {
+import { useMemo } from "react";
+
+export default function Header({
+  cart,
+  removeFromCart,
+  decreaseQuantity,
+  increaseQuantity,
+  clearCart,
+}) {
+  //state derived from props
+  const isEmpty = useMemo(() => cart.length === 0, [cart]);
+  const cartTotal = useMemo(
+    () => cart.reduce((total, item) => total + item.price * item.quantity, 0),
+    [cart]
+  );
+
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -20,7 +35,7 @@ export default function Header( ) {
                 alt="imagen carrito"
               />
 
-              {/* <div3 id="carrito" className="bg-white p-3">
+              <div id="carrito" className="bg-white p-3">
                 {isEmpty ? (
                   <p className="text-center">El carrito esta vacio</p>
                 ) : (
@@ -42,7 +57,7 @@ export default function Header( ) {
                               <img
                                 className="img-fluid"
                                 src={`/img/${guitar.image}.jpg`}
-                                alt="imagen guitarra"
+                                alt={guitar.name}
                               />
                             </td>
                             <td>{guitar.name}</td>
@@ -90,7 +105,7 @@ export default function Header( ) {
                 >
                   Vaciar Carrito
                 </button>
-              </div3> */}
+              </div>
             </div>
           </nav>
         </div>

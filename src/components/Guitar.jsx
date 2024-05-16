@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 "use cliente";
-export default function Guitar({ guitar }) {
+// eslint-disable-next-line no-unused-vars
+export default function Guitar({ guitar,addToCart }) {
+  // eslint-disable-next-line no-unused-vars
   const { id, image, name, description, price } = guitar;
 
-  const handleClick = (id) => {
-    console.log("click", id);
-  };
+  
 
   return (
     <div className="col-md-6 col-lg-4 my-4 row align-items-center">
@@ -22,7 +23,7 @@ export default function Guitar({ guitar }) {
         <button
           type="button"
           className="btn btn-dark w-100"
-          onClick={() => handleClick(guitar)}
+          onClick={() => addToCart(guitar)}
         >
           Agregar al Carrito
         </button>
